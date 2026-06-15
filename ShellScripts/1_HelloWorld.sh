@@ -26,4 +26,6 @@ echo password is $password
 
 # take command output into a variable.
 TIMESTAMP=$(date)
-echo "script executed at $TIMESTAMP"
+echo "script executed at $TIMESTAMP" # script executed at Mon Jun 15 10:07:38 UTC 2026
+
+

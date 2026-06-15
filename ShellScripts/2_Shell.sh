@@ -11,6 +11,8 @@ echo "PID of script - $$"
 sleep 100 & 
 echo "To access background process id - $!" # eg: sleep 100 & 
 
+# $@ treats args separately, $* treats as single arg.
+
 # eg:
 # sh 2_Shell.sh 1 2 3 4 5 99
 # All args passed to script - 1 2 3 4 5 99
@@ -21,3 +23,5 @@ echo "To access background process id - $!" # eg: sleep 100 &
 # Home directory - /home/ec2-user
 # PID of script - 2113
 # To access background process id - 2114
+
+# Data types

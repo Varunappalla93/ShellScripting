@@ -26,14 +26,13 @@ echo password is $password
 
 # take command output into a variable.
 START_TIME=$(date +%s)
-echo "script executed at $START_TIME" # script executed at Mon Jun 15 10:07:38 UTC 2026
+echo "script executed at $START_TIME" # script executed at 1781518412
 
 sleep 10 # to pause script for 10 secs
 
 END_TIME=$(date +%s)
-echo "script executed at $END_TIME" 
+echo "script executed at $END_TIME"  # script executed at 1781518422
 
 TOTAL_TIME=$(($END_TIME-$START_TIME))
 
 echo "Script executed in $TOTAL_TIME secs" # Script executed in 10 secs
-

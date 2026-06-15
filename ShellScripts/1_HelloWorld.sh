@@ -35,4 +35,5 @@ echo "script executed at $END_TIME"
 
 TOTAL_TIME=$(($END_TIME-$START_TIME))
 
-echo "Script executed in $TOTAL_TIME secs"
+echo "Script executed in $TOTAL_TIME secs" # Script executed in 10 secs
+

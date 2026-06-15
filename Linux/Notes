@@ -1,0 +1,465 @@
+SDLC - Software Development Life Cycle.
+Requirements-Development-Testing-Deployment-Maintainance.
+
+Devops is process of building, deploying and testing applications continously, deploy and test code parallely to get faster feedback.
+We can use tools to make this processs smooth for continous development, integration, deployment, testing, security, delivery and monitoring
+application security.
+
+Client-Server Architecture Mechanism, Authentication Mechanisms - OTP, RSA Tokens, username/password, private/public key based.
+
+Server=box=node.
+
+ssh-keygen -f var-devops - creates a public and a private key and then paste only public key in Import keypairs in AWS console to select that 
+keypair while launching EC2 instance.
+
+firewall - inbound(incoming traffic) and outbound(outgoing traffic).
+
+We need to be in privatekey file path location and then we need to ssh to ec2 instance using "ssh -i <private-keyname> username@ipaddress" in terminal/git bash/putty etc. 
+Eg: ssh -i var-devops ec2-user@13.218.246.206.
+
+Linux Commands:
+$ - normal user
+# - root user
+echo "text" - to print text
+cd - home directory from anywhere
+sudo su - switch to root user
+sudo su - - go to root user home directory, i.e. /root
+/home/ec2-user - default ec2 path location
+
+uname - OS/kernel info
+uname --help - info about uname command
+man uname - info about uname command
+
+pwd - present working directory
+cd - change directory.
+ls - l - list files and directories in alphabetical order.
+ls - lr - list files and directories in reverse order.
+ls - lt - list files and directories in timestamp order, i.e. latest files at top.
+ls - ltr - list files and directories in reverse timestamp order, i.e. latest files at bottom.
+ls -latr - list hidden(.) and visible files and directories in reverse timestamp order i.e. latest files at bottom.
+
+touch filename.txt - creates new file.
+mkdir foldername - creates new directory.
+d rwx r-x r-x  - d is directory.
+- rwx r-x r-x  -  - is file.
+cat > filename.txt - to write content to file and enter some content and then press enter and ctrl+D to save the file.
+cat >> filename.txt - to append new content to file.
+cat filename.txt - read file content.
+cd foldername - go to directory.
+cd .. - come one step back.
+rm filename.txt - remove the file.
+rmdir foldername - remove the directory.
+rm -r foldername - removes directory and its sub-directories.
+
+
+cp filename.txt foldername/ - copy files from src to dest.
+mv filename.txt foldername/ - move files from src to dest.
+mv filename.txt renamedfilename.txt - rename file name.
+mv filename.txt devops/renamedfilename.txt - move and rename file name in another directory.
+
+
+wget <url> - download url content, used for downloading packages.
+curl <url> - to view URL content, shows output on screen will not download by default, used to hit API Url's.
+
+
+grep - search inside file, grep <word to search> <file>.
+eg: grep -n -i user filename.txt, n gives line number, i stands for ignore case sensitive.
+grep -c user filename.txt - -c gives user word occurrences.
+grep -v user filename.txt - -v gives non-matching word occurrences, v stands for verbose.
+grep 'architecuture$' filename.txt - $ gives words ending with architecture, and ^ gives words starting with architecture.
+
+
+head filename.txt - top 10 lines
+tail filename.txt - bottom 10 lines
+head -n 3 filename.txt - top 3 lines
+tail -n 3 filename.txt - bottom 3 lines
+
+
+head -n 15 filename.txt | tail -n 10 - output of one command to input of another command using piping.
+eg: cat filename.txt | grep user
+
+cd /var/log/messages - to check linux logs
+tail -f app.log - -f stands for “Follow” mode as it keeps watching the file for new lines in real time, this continuously displays appended log entries until you stop it with Ctrl+C.
+
+
+cut - to process and extract text.
+eg: echo "Varun/Appalla"
+cut -d "/" -f1 , i.e. cut words using "/" delimiter, -f1 here is first fragment .i.e. Varun.
+
+eg: cat /etc/passwd - shows linux users with ":" as fragments.
+cut -d ":" -f1,3 /etc/passwd - prints first and third fragments.
+
+
+awk - to process and extract text, more advanced than cut.
+eg: echo "Varun/Appalla"
+awk -F "/" '{print $NF}' - prints last fragment , i.e. Appalla.
+
+eg: cat /etc/passwd - shows linux users with ":" as fragments.
+awk -F ":" '{print $1F,$3F}' /etc/passwd - prints first and third fragments.
+awk -F ":" '$3>1000 {print $1F,$3F}' users - prints users with id more than 1000.
+
+history - all previous commands.
+Ctrl+r - to enable reverse search and give any command , for eg: search using wget and we get all its previous entered commands starting from wget.
+will be displayed where were used earlier.
+clear - clear the screen.
+exit - exit from current session.
+
+
+Vim Editor - open using vim filename.txt
+esc mode, command/colon mode(:) and insert mode(i).
+
+esc mode:
+gg - goes to top of file.
+Shift+g - goes to bottom of file.
+u - undo last change.
+Ctrl+r - redo last change.
+dd - deletes line.
+yy - copy the line.
+p - paste below the line.
+Shift+p - paste above the line.
+
+
+command/colon mode(:):
+.wq - to save the file and quit.
+.q - quit.
+.q! - quit without saving changes.
+:set nu - display number lines.
+:<lineno> - to go to that respective line.
+:/<wordtosearch> - to search for that word - searches from top to bottom.
+:?<wordtosearch> - to search for that word - searches from bottom to top.
+:<linenumber>d - deletes 2nd line.
+:%d - deletes all lines.
+:noh - stop highlighting words.
+:<line-number>s/<wordtofind>/<replacedword> - replaces first occurrence in that line.
+:<line-number>s/<wordtofind>/<replacedword>/g - replaces all occurrences in that line.
+:%s/<wordtofind>/<replacedword>/g - replaces all occurrences in all the lines.
+
+insert mode:
+i - insert mode.
+
+
+User Management:
+user, group, others
+u , g , o
+
+useradd ramesh  - creates ramesh user.
+id ramesh - view ramesh user, group info.
+
+User in linux will have one primary group and atleast one secondary group.
+
+groupadd devops - create devops group.
+cat /etc/group - display all groups.
+
+usermod -g devops ramesh - adds ramesh user to devops group, now his default groups will be removed and he will be added to devops group
+usermod -aG testing ramesh  - adds ramesh user to secondary group, i.e. testing group along with devops group as primary group.
+
+passwd ramesh - create the password for ramesh user.
+
+ssh ramesh@<ipaddress> , it gives permission denied as linux by default only accepts key-based auth, hence we need to emnable password based auth.
+For that, we need to go to vim /etc/ssh/sshd_config and search for PasswordAuthentication and change option from no to yes and save and close 
+the file, i.e :wq.
+
+sshd -t - to check if sshd file is correct without errors.
+systemctl restartd sshd - restart sshd service.
+
+ssh ramesh@<ipaddress> - now ramesh can login with his password to that EC2 instance.
+
+How to give sudo access to ramesh:
+We can use "usermod -aG wheel ramesh" - to add ramesh to wheel group, and now ramesh will have sudo access for all commands.
+
+For giving ramesh to access only specific "systemctl" command instead of complete sudo access such as logging as sudo user, adding/removing users etc,
+we need to go to vim /etc/sudoers file and add this line under wheel command:
+ramesh ALL=(ALL) /usr/bin/systemctl
+
+visudo -c - to check if sudoers file is correct without errors.
+
+gpasswd -d ramesh wheel - remove ramesh from wheel group.
+
+usermod -L ramesh - locks user ramesh to prevent him to login to server.
+
+gpasswd -d ramesh testing - remove ramesh from testing group.
+
+usermod -g ramesh ramesh - adds ramesh user to ramesh group, this will add him back to initial ramesh primary group.
+
+Before removing ramesh, we need to take backup of this files, hence we login as sudo access and give 
+taf -cf /root/ramesh.tar.gz /home/ramesh to create ramesh.tar.gz zip file in root folder and we can extract it using tar -xf ramesh.tar.gz and
+ls -l to see ramesh directory.
+
+tar -cf devops.tar.gz devops - creates devops folder tar zip file.
+tar -xf devops.tar.gz -  extracts devops zip file content.
+
+userdel -r ramesh - removes ramesh user and his home directory.
+
+Permissions:
+Only the Owner of file or root user can change access levels.
+u g o - user group others
+eg:
+chmod o+x users.txt
+chmod o-x users.txt
+chmod ugo+x users.txt
+
+or we can use 4 2 1 nos for r w x permissions.
+
+eg:
+chmod 764 users.txt
+
+Ownership:
+Only root user can change file ownership.
+chown <user>:<group>
+eg: sudo chown ec2-user:devops linux - will change only owner directory.
+sudo chown -R ec2-user:devops linux - will change owner directory and owner subdirectories also.
+
+Employee Joins organization - he wil generate public key and send it to admins, for admins to give access to EC2 servers to him.
+now add him ->
+sudo useradd ram
+sudo su - 
+cd /home/ram and ls -la
+mkdir .ssh and ls -la 
+cd .ssh/ and touch authorized_keys and vim authorized_keys and paste his public key here.
+cd .. and ls -la
+chowm ram:ram -R .ssh and cd .ssh and ls -la.
+chmod 600 authorized_keys
+cd .. and ls -la
+chmod 700 .ssh
+groupadd devops
+usermod -g devops ram
+cd /etc/sudoers.d/ and ls -l 
+vim devops and enter %devops ALL=(ALL) NOPASSWD:ALL
+
+Now ram can login using ssh to ec2 instance with ssh - i ram ram@<ipaddress> and add other users etc such as sudo useradd Mahesh as he got 
+root access enabled, i.e. ALL=(ALL) in /etc/sudoers.d/ file.
+
+
+Package Management:
+yum - old package manager, dnf - new package manager.
+cat /etc/yum.repos.d/ - all package URLS are configured.
+
+dnf install <packagename> - for RedHat based instances.
+eg: dnf install nginx -y.
+
+dnf list installed - to show installed packages.
+dnf list available - to show available packages.
+dnf search python - to show python related packages.
+
+The Linux kernel is the core foundation of the Linux operating system developed in C lang.
+Redhat developed their OS on Linux Kernal by combining commands+apps, called as Redhat flavor/distribution and released with names such as
+centos/fedora OS.
+Ubuntu, Oracle, Suse, IBM have done the same.
+
+Community Edition - Free, Enterprise Editiion - Company Support, eg: Redhat support.
+
+
+Service Management:
+There are 65,535 ports in a system.
+systemctl start <servicename>, Same for restart, status, enable, disable - to check service statuses etc.
+
+nginx is front-end web server to host web applications.
+
+http default port no - 80.
+https default port no - 443.
+
+sudo netstat -lntp  - list all open ports and which programs are using them.
+
+
+Process Management:
+ps -ef - process started by user, gives user, process id, parent process id.
+pf -ef | grep nginx - gets nginx process details.
+sleep 10 & - runs in background without blocking the screen.
+
+kill <process id> to kill process
+kill -9 <process id> to kill process forcefully
+
+top - to show process info such as  cpu ram and memory consumed etc.
+
+3-Tier Architecture:
+FE server - App Server - DB Server.
+
+Expense Management Project:
+SQL/MySQL/Oracle - RDBMS - data is stored in rows and columns.
+
+tail -f /var/log/messages - running logs location.
+
+telnet <privateIPaddress> <portNo> - to check if connection is establisted to another server IP address.
+eg: telnet 172.31.35.204 3306
+
+nginx - web server to host FE static web pages, can also be used as reverse proxy.
+/etc/nginx - nginx configs
+/usr/share/nginx/html - configure html pages
+/usr/share/nginx/html/index.html - default nginx html page
+/var/log/nginx/error.log - nginx error logs
+/etc/nginx/conf.d/*.conf - nginx conf file
+
+
+A forward proxy sits in front of clients to manage outbound traffic, masking user identities and bypassing restrictions.
+Configured and known to the client.
+Used for Content filtering, bypassing censorship, privacy
+
+
+A reverse proxy sits in front of servers to manage inbound traffic, distributing requests to backend applications 
+while protecting the origin servers from direct exposure.
+Completely hidden from the client.
+Used for Load balancing, SSL termination, DDoS protection.
+
+HTTPS Methods - get, post, put, patch, delete.
+
+ICANN (Internet Corporation for Assigned Names and Numbers) is a global, nonprofit public-benefit corporation headquartered in the United States. 
+It is responsible for coordinating the maintenance and procedures of critical databases related to the namespaces and numerical spaces of the Internet,
+ensuring the network's stable, secure, and interoperable operation.
+
+Domain Name System (DNS) Management: Coordinates the root server system and oversees generic Top-Level Domains (gTLDs like .com, .org) 
+and country-code TLDs (ccTLDs like .uk, .jp).
+
+IP Address Allocation: Manages and distributes Internet Protocol (IP) version 4 and version 6 addresses to regional registries.
+
+
+TLD root servers, formally known as DNS root name servers, are the master directory of the Internet. 
+
+They sit at the top of the Domain Name System (DNS) hierarchy and translate human-readable domain names (like .com or .org) into machine-readable IP addresses 
+by directing queries to the appropriate Top-Level Domain (TLD) servers.
+
+There are 13 original logical root name servers identified by letters A through M.
+
+Domain registers such as godaddy checks wih TLD if domain is avaialble, if available it collects the details such as company, name, address
+etc, and after payment, godaddy updates TLD about buyer and domain details and then we need to create one A record against domain register.
+
+Browser-Cache-OS-Cache-ISP DNS Resolver-Cache-Root Servers-TLD information-Contact TLD-Go Daddy-Fetch A record for us.
+
+Give AWS hosted zone name servers in hostiger name servers to route hostinger domain to AWS Route 53 service.
+
+Types of Records:
+NS(Name servers)- who is managing the domain and responsible to provide IP address.
+A record - Holds IP address of domain.
+SOA(DNS Start of Authority) record is a mandatory resource record that stores essential administrative information about a domain zone.
+A - Holds IPv4 IP address.
+AAAA - Holds IPv6 IP address.
+MX - Mail records.
+TXT - Text Records
+CName - Canonical Name.
+eg: nslookup -type=CNAME google.vardevops.online and it gives us www.google.com as CNAME, as in EC2 instances, CNAME default type is A, hence
+we need to explicitly mention type as CNAME.
+
+
+TTL - time to live - how many secs for changes to get reflected.
+
+nslookup vardevops.online - to check if domain is reflected with our given IP address.
+nslookup mongodb.vardevops.online - to check if mongodb.vardevops.online domain is reflected with mongodb private IP address.
+
+No of ways to check if server is up and running:
+curl -v http://localhost:8080/health,  eg: {"app":"OK","mongo":true}, -v for more data
+telnet IPaddress Portno,  eg: telnet mongodb.vardevops.online 27017
+ps -ef | grep node,  eg: roboshop   14619       1  1 07:51 ?        00:00:00 /bin/node /app/server.js
+systemctl status service-name , eg: Active: active (running) since Thu 2026-06-11 07:51:12 UTC; 3min 15s ago
+netstat -lntp,  eg: tcp6       0      0 :::8080                 :::*                    LISTEN      14619/node  
+
+HTTP status codes:
+100X,200X,300X,400X,500X
+
+
+To check logs:
+journalctl -u catalogue -f - to check live logs.
+cd /var/log/nginx, and less access.log - logs of requests and statuses.
+less /var/log/messages - check logs.
+
+
+Linux file-structure hierarchy:
+/bin - essential user binaries/commands/softwares
+/boot - files/process/commands required for OS booting
+/dev - includes mouse,keyboard , usb device interface, EBS volumes etc
+/etc - extra configuration files related to system packages, user installed packages
+/home - user related files etc, /home/username
+/lib and /lib64 - all required libraries
+/media - removable disks like dvd, usb are mounted here
+/mnt - mount extra disks in linux server for temp purpose
+/opt - can be stored here when software is installed manually, eg; /opt/roboshop
+/proc - processer info, eg: cat /proc/cpuinfo, /proc/meminfo,/proc/uptime, cd /proc and ls -l - running process info related to kernel is displayed
+/root - root user home directory
+/run - running process info
+/sbin - root user essential binaries/commands/softwares
+/srv - service , data related to system like html directory etc, eg; /srv/www, /srv/ftp
+/swap - virtual RAM, if swap usage is more, it indicates system is under stress
+/sys - kernel subsystems info
+/tmp - temporary files and directories to be stored here
+/usr - specific user related utilities/applications
+/var - variable and log files , eg: /var/lib/docker
+
+
+How to add extra disk to linux server:
+1.create EBS(Elastic Block Storage) volume
+2.attach to instance and create partition.
+3.Create file system, xfs is best for AWS
+4.Create data folder, -p create if folder is not there or ignore it
+5.Mount nvme1n1p1 partition to the created data folder
+
+network disk - google drive, one driver, S3 etc, hard disk - physical device, latency is less.
+DB are always stored in hard disk, normal files such as images and objects are stored in network disk.
+hard disk can be attached only to one machine, network disk can be attched to multiple servers.
+
+EBS is like harddisk, hence should be in same availability zone as EC2 server, eg: 1f.
+
+
+Go to AWS-Volumes and Create new volume of 20GB and attach to required instance and give lsblk in terminal to check attached disk storage,
+nvme0n1 is the root disk  - 20G, used for OS default purposes.
+eg: our created new disk is nvme1n1 - 20G  - used for DB related data, other imp files and configurations are stored here.
+
+sudo parted /dev/nvme1n1 --script mklabel gpt mkpart primary 0% 100%
+Now nvme1n1 will have this below - nvme1n1p1, i.e. divided into 1 part.
+
+
+sudo mkfs.xfs -f /dev/nvme1n1p1 and df -hT 
+
+sudo mkdir -p data 
+
+sudo mount /dev/nvme1n1p1 /data
+
+give df -hT and now observe that /dev/nvme1n1p1 is mounted on /data
+
+sudo blkid /dev/nvme1n1p1 - to generate UUID to store this disk partition permanently and note this UUID for adding to /etc/fstab file
+
+sudo vim /etc/fstab and add this -> UUID="UUID" /data xfs defaults,nofail 0 2
+
+sudo mount - a -> test mount configuration
+
+To modify and extend nvme1n1 disk storage from 20G to 35G , we do in AWS console->volumes and to extend its disk partition's memory, we use below commands:
+sudo growpart /dev/nvme1n1 1
+xfs_growfs /data 
+df -hT /data - to check extended disk partition memory.
+
+Memory Management:
+df -hT - check disk info such as storage etc
+free -m - check ram storage
+free -h - check ram storage in MB's
+top - running commands info such as memory, cpu utilisation etc
+ps aux --sort -rss | head -10 - top 10 memory usage running process
+cd /var and give du -sh * - check which files are consuming more memory inside that specific folder
+
+
+inode = Stores metdata of file/directory such as filr type, owner, permissions, size, memory block address etc.
+stat <filename.txt> - to see file metadata.
+inode does not store its actual file content.
+
+
+symlink/Shortlink/Softlink ->  Like a shortcut file/directory.
+eg: ln -s links.txt ../linux.txt link - creates softlink for linux.txt using link, stands with l. eg: lrwx wx rwx
+
+stat link and stat linux.txt - has different inode nos for symlinks.
+
+inode no is different for symlinks files and original files.
+Symlink can be created for files and directories and symlink can be created across all different filesystems.
+If actual file is removed, symlink will be broken.
+Used for version switching and roll backing.
+ln -sfn dnf-4 dnf - switch force link, for upgrading/rollback purposes.
+
+YUM package manager - before RHEL 8.
+DNF Package manager - From RHEL 8.
+
+
+hardlink -  cannot be created in another filesystem.
+hardlink file is same as original file, but maybe different name.
+inode no is same for hardlinks files and original files.
+They point to same memory location, so memory is not wasted.
+hardlink cannot be created for directories.
+hardlinks are used for backup.
+When all hard links are deleted, then only original file will be deleted.
+sudo find /home -xdev -inum 524430 - gives all files related to that inum within that file system.
+
+eg: ln aws.txt aws-1.txt.

@@ -21,5 +21,5 @@ read $email
 echo email is $email
 
 echo "Pls enter your password"
-read $password
+read -s $password  # secret
 echo password is $password

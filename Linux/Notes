@@ -7,7 +7,7 @@ application security.
 
 Client-Server Architecture Mechanism, Authentication Mechanisms - OTP, RSA Tokens, username/password, private/public key based.
 
-Server=box=node.
+Server=box=node -  all are same.
 
 ssh-keygen -f var-devops - creates a public and a private key and then paste only public key in Import keypairs in AWS console to select that 
 keypair while launching EC2 instance.

@@ -1,3 +1,3 @@
 #!/bin/bash
 
-echo "HEllO WORLD"
+echo "HEllO WORLD SHELL"

@@ -24,4 +24,5 @@ echo "To access background process id - $!" # eg: sleep 100 &
 # PID of script - 2113
 # To access background process id - 2114
 
+
 # Data types

@@ -24,4 +24,6 @@ echo "Pls enter your password"
 read -s password  # store password into $password variable, -s is for secret
 echo password is $password
 
-
+# take command output into a variable.
+TIMESTAMP=$(date)
+echo "script executed at $TIMESTAMP"

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Special Variables
-$1 $2...$N - args passed
+# $1 $2...$N - args passed
 echo "All args passed to script - $@"
 # No of args passed to script - $#
 # Script Name - $0

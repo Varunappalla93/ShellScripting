@@ -16,3 +16,10 @@ echo HELLO MY NAME IS ${NAAM} and I am ${UMAR} YEARS OLD
 # HELLO MY NAME IS QA1 and I am 43 YEARS OLD
 
 
+echo "Pls enter your email"
+read $email
+echo email is $email
+
+echo "Pls enter your password"
+read $password
+echo password is $password

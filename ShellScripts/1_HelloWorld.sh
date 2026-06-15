@@ -25,7 +25,14 @@ read -s password  # store password into $password variable, -s is for secret
 echo password is $password
 
 # take command output into a variable.
-TIMESTAMP=$(date)
-echo "script executed at $TIMESTAMP" # script executed at Mon Jun 15 10:07:38 UTC 2026
+START_TIME=$(date +%s)
+echo "script executed at $START_TIME" # script executed at Mon Jun 15 10:07:38 UTC 2026
 
+sleep 10 # to pause script for 10 secs
 
+END_TIME=$(date +%s)
+echo "script executed at $END_TIME" 
+
+TOTAL_TIME=(($END_TIME-START_TIME))
+
+echo "Script executed in $TOTAL_TIME secs"

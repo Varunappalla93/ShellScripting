@@ -8,4 +8,4 @@ echo "present directory - $PWD"
 echo "who is running script - $USER"
 echo "Home directory - $HOME"
 echo "PID of script - $$"
-echp "To access background process id - $!" # eg: sleep 100 & 
+echo "To access background process id - $!" # eg: sleep 100 & 

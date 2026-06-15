@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# print statement
+# print statements
 echo "HEllO SHELL WORLD"
 
 # variables - ${VAR} or $VAR

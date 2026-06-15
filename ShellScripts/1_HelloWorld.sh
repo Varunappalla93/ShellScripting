@@ -17,9 +17,11 @@ echo HELLO MY NAME IS ${NAAM} and I am ${UMAR} YEARS OLD
 
 
 echo "Pls enter your email"
-read email
+read email # store email into $email variable
 echo email is $email
 
 echo "Pls enter your password"
-read -s password  # -s is for secret
+read -s password  # store password into $password variable, -s is for secret
 echo password is $password
+
+

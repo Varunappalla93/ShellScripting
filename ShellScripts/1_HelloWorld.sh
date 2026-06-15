@@ -1,3 +1,6 @@
 #!/bin/bash
 
-echo "HEllO WORLD SHELL"
+# print statement
+echo "HEllO SHELL WORLD"
+
+# variables

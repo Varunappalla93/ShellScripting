@@ -2,8 +2,8 @@
 
 # Special Variables
 $1 $2...$N - args passed
-echo "All variables passed to script - $@"
-# No of variables passed to script - $#
+echo "All args passed to script - $@"
+# No of args passed to script - $#
 # Script Name - $0
 # present directory - $PWD
 # who is running script - $USER

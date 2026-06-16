@@ -9,7 +9,7 @@ AGE=32
 echo HELLO MY NAME IS ${NAME} and I am $AGE YEARS OLD
 # HELLO MY NAME IS VARUN and I am 32 YEARS OLD
 
-# pass args via terminal - sh 1_HelloWorld.sh QA1 43
+# pass args via terminal - sh 1_shell.sh QA1 43
 NAAM=$1
 UMAR=$2
 echo HELLO MY NAME IS ${NAAM} and I am ${UMAR} YEARS OLD

@@ -73,3 +73,4 @@ if [ $? -ne 0 ]; then
     echo "installing nginx failed"
 else
     echo "installed nginx"
+fi

@@ -45,7 +45,7 @@ echo "First Fruit is ${FRUITS[0]}" # prints first element of array, i.e. First F
 NUMBER=5
 if [ $NUMBER -gt 10 ]; then
     echo "$NUMBER is greater than 20"
-elif [$NUMBER -eq 20 ]; then
+elif [ $NUMBER -eq 20 ]; then
     echo "$NUMBER is equal to 20"    
 else
     echo "$NUMBER is less to 20"  # 5 is less to 20

@@ -72,5 +72,5 @@ dnf install nginx -y # Pls run script with root user access
 if [ $? -ne 0 ]; then
     echo "installing nginx failed"
 else
-    echo "installed nginx"
+    echo "installed nginx succesfully"
 fi

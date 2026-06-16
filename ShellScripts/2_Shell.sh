@@ -48,10 +48,22 @@ if [ $NUMBER -gt 10 ]; then
 elif [ $NUMBER -eq 20 ]; then
     echo "$NUMBER is equal to 20"    
 else
-    echo "$NUMBER is less to 20"  # 5 is less to 20
+    echo "$NUMBER is less than 20"  # 5 is less to 20
 fi
 
 
 # exit codes - ranges from 0 to 127
 # 0 - success
 # non 0 - failure
+
+# root user id - 0 
+# other users id - greater than 0
+
+USER_ID=$(id -u)
+if [ $USER_ID -ne 0 ]; then
+    echo "Pls run script with root user access"
+    exit 1
+fi
+
+echo "installing nginx"
+dnf install nginx -y

@@ -24,24 +24,26 @@ echo "exit status of previous command - $?"
 # Home directory - /home/ec2-user
 # PID of script - 2113
 # To access background process id - 2114
+# exit status of previous command - 0
 
 
 # Data types - number and string(default)
 NUM1=100
 NUM2=200 # if string is given, it takes as 0 by default
 SUM=$(($NUM1+NUM2))
-echo "SUM IS: $SUM"
+echo "SUM IS: $SUM"     # SUM IS: 300
+
 
 # Arrays
-FRUITS=("APPLE","BANANA","POMO")
-echo "Fruits are ${FRUITS[@]}" # prints complete array
+FRUITS=("APPLE" "BANANA" "POMO")
+echo "Fruits are ${FRUITS[@]}" # prints complete array, i.e. Fruits are APPLE,BANANA,POMO
 echo "First Fruit is ${FRUITS[0]}" # prints first element of array
 
 
 # conditions
 # if-elif-else
 NUMBER=25
-if [ $NUMBER -gt 20 ]; then
+if [ $NUMBER -gt 10 ]; then
     echo "$NUMBER is greater than 20"
 elif [$NUMBER -eq 20]; then
     echo "$NUMBER is equal to 20"    

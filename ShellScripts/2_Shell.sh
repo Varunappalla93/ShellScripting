@@ -9,7 +9,8 @@ echo "who is running script - $USER"
 echo "Home directory - $HOME"
 echo "PID of script - $$"
 sleep 100 & 
-echo "To access background process id - $!" # eg: sleep 100 & 
+echo "To access background process id - $!"
+echo "exit status of previous command - $?"
 
 # $@ treats args separately, $* treats as single arg.
 
@@ -25,4 +26,30 @@ echo "To access background process id - $!" # eg: sleep 100 &
 # To access background process id - 2114
 
 
-# Data types
+# Data types - number and string(default)
+NUM1=100
+NUM2=200 # if string is given, it takes as 0 by default
+SUM=$(($NUM1+NUM2))
+echo "SUM IS: $SUM"
+
+# Arrays
+FRUITS=("APPLE","BANANA","POMO")
+echo "Fruits are ${FRUITS[@]}" # prints complete array
+echo "First Fruit is ${FRUITS[0]}" # prints first element of array
+
+
+# conditions
+# if-elif-else
+NUMBER=25
+if [ $NUMBER -gt 20 ]; then
+    echo "$NUMBER is greater than 20"
+elif [$NUMBER -eq 20]; then
+    echo "$NUMBER is equal to 20"    
+else
+    echo "$NUMBER is less to 20"    
+fi
+
+
+# exit codes - ranges from 0 to 127
+# 0 - success
+# non 0 - failure

@@ -36,13 +36,13 @@ echo "SUM IS: $SUM"     # SUM IS: 300
 
 # Arrays
 FRUITS=("APPLE" "BANANA" "POMO")
-echo "Fruits are ${FRUITS[@]}" # prints complete array, i.e. Fruits are APPLE,BANANA,POMO
-echo "First Fruit is ${FRUITS[0]}" # prints first element of array
+echo "Fruits are ${FRUITS[@]}" # prints complete array, i.e. Fruits are APPLE BANANA POMO
+echo "First Fruit is ${FRUITS[0]}" # prints first element of array, i.e. First Fruit is APPLE
 
 
 # conditions
 # if-elif-else
-NUMBER=25
+NUMBER=12
 if [ $NUMBER -gt 10 ]; then
     echo "$NUMBER is greater than 20"
 elif [$NUMBER -eq 20]; then

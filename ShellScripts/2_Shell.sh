@@ -48,7 +48,7 @@ if [ $NUMBER -gt 10 ]; then
 elif [$NUMBER -eq 20]; then
     echo "$NUMBER is equal to 20"    
 else
-    echo "$NUMBER is less to 20"    
+    echo "$NUMBER is less to 20"  # 5 is less to 20
 fi
 
 

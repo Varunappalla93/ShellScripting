@@ -66,4 +66,10 @@ if [ $USER_ID -ne 0 ]; then
 fi
 
 echo "installing nginx"
-dnf install nginx -y
+dnf install nginx -y # Pls run script with root user access
+
+
+if [ $? -ne 0 ]; then
+    echo "installing nginx failed"
+else
+    echo "installed nginx"

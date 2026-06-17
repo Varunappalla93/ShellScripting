@@ -10,7 +10,7 @@ G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
 
-# to catch errors using set and trap without VALIDATE
+# to catch errors using set and trap without using VALIDATE()
 # set -e 
 # trap 'echo "there is error in $LINENO, Command: $BASH_COMMAND"' ERR
 

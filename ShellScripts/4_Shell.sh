@@ -6,23 +6,31 @@ LOGS_FILE="/var/log/shell-script/$0.log"
 
 USER_ID=$(id -u)
 if [ $USER_ID -ne 0 ]; then
-    echo "Pls run script with root user access" | tee -a $LOGS_FILE
+    echo -e " $R Pls run script with root user access $N" | tee -a $LOGS_FILE
     exit 1
 fi
 
+# Colors
+R="e\[31m"
+G="e\[32m"
+G="e\[33m"
+N="e\[0m"
+
+
 mkdir -p $LOGS_FOLDER # create if not yet created
 
+# function to verify if packages are installed or failed
 VALIDATE()
 {
 # $? - exit status of previous command
 if [ $1 -ne 0 ]; then
-    echo "installing $2 failed" | tee -a $LOGS_FILE # tee -a appends all commands execution to log file
+    echo -e "installing $2 ..$R failed $N" | tee -a $LOGS_FILE # tee -a appends all commands execution to log file
 else
-    echo "installing $2 successful" | tee -a $LOGS_FILE
+    echo -e "installing $2 ..$G successful $N" | tee -a $LOGS_FILE
 fi
 }
 
-# Loops
+# Loops and check for packages, if installed skip it or else install it
 for package in $@  # sudo 4_Shell.sh nginx mysql nodejs
 do
     dnf list installed $package | tee -a $LOGS_FILE
@@ -31,6 +39,6 @@ do
         dnf install $package -y &>> $LOGS_FILE
         VALIDATE $? "$package"
     else
-         echo "$package already installed, skipping"
+         echo -e "$package already installed, $Y skipping $N"
     fi
 done

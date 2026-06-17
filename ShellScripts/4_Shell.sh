@@ -10,6 +10,9 @@ G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
 
+# to catch errors
+# set -e 
+# trap 'echo "there is error in $LINENO, Command: $BASH_COMMAND"' ERR
 
 # check if user is root user or not, if not stop script using exit 1
 USER_ID=$(id -u)

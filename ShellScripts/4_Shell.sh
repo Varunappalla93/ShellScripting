@@ -25,7 +25,12 @@ fi
 # Loops
 for package in $@  # sudo 4_Shell.sh nginx mysql nodejs
 do
-echo "Installing $package"
-dnf install $package -y &>> $LOGS_FILE
-VALIDATE $? "$package"
+    dnf list installed $package | tee -a $LOGS_FILE
+    if [ $? -ne 0 ]; then
+        echo "$package not installed, installing now"
+        dnf install $package -y &>> $LOGS_FILE
+        VALIDATE $? "$package"
+    else
+         echo "$package already installed, skipping"
+    fi
 done

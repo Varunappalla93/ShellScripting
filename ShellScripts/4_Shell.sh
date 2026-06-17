@@ -6,7 +6,7 @@ LOGS_FILE="/var/log/shell-script/$0.log"
 
 USER_ID=$(id -u)
 if [ $USER_ID -ne 0 ]; then
-    echo "Pls run script with root user access"
+    echo "Pls run script with root user access" | tee -a $LOGS_FILE
     exit 1
 fi
 
@@ -18,7 +18,7 @@ VALIDATE()
 if [ $1 -ne 0 ]; then
     echo "installing $2 failed" | tee -a $LOGS_FILE # tee -a appends all commands execution to log file
 else
-    echo "installing $2 succesful" tee -a $LOGS_FILE
+    echo "installing $2 successful" | tee -a $LOGS_FILE
 fi
 }
 

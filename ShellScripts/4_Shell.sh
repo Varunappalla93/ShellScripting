@@ -4,7 +4,7 @@
 LOGS_FOLDER="/var/log/shell-script"
 LOGS_FILE="/var/log/shell-script/$0.log"
 
-# check if user is root user or not
+# check if user is root user or not, if not stop script using exit 1
 USER_ID=$(id -u)
 if [ $USER_ID -ne 0 ]; then
     echo -e " $R Pls run script with root user access $N" | tee -a $LOGS_FILE

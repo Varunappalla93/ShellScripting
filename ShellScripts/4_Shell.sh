@@ -31,9 +31,9 @@ fi
 }
 
 # Loops and check for packages, if installed skip it or else install it
-for package in $@  # sudo 4_Shell.sh nginx mysql nodejs
+for package in "$@"  # sudo 4_Shell.sh nginx mysql nodejs
 do
-    dnf list installed $package | tee -a $LOGS_FILE
+    dnf list installed $package &>> $LOGS_FILE
     if [ $? -ne 0 ]; then
         echo "$package not installed, installing now"
         dnf install $package -y &>> $LOGS_FILE

@@ -11,10 +11,10 @@ if [ $USER_ID -ne 0 ]; then
 fi
 
 # Colors
-R="e\[31m"
-G="e\[32m"
-G="e\[33m"
-N="e\[0m"
+R="\e[31m"
+G="\e[32m"
+Y="\e[33m"
+N="\e[0m"
 
 
 mkdir -p $LOGS_FOLDER # create if not yet created

@@ -16,18 +16,16 @@ VALIDATE()
 {
 # $? - exit status of previous command
 if [ $1 -ne 0 ]; then
-    echo "installing $2 failed"
+    echo "installing $2 failed" | tee -a $LOGS_FILE # tee -a appends all commands execution to log file
 else
-    echo "installing $2 succesfull"
+    echo "installing $2 succesful" tee -a $LOGS_FILE
 fi
 }
 
-
-
-echo "Installing nginx"
-dnf install nginx -y &>> $LOGS_FILE
-VALIDATE $? "nginx"
-
-echo "Installing mysql"
-dnf install mysql -y &>> $LOGS_FILE
-VALIDATE $? "mysql"
+# Loops
+for package in $@  # sudo 4_Shell.sh nginx mysql nodejs
+do
+echo "Installing $package"
+dnf install $package -y &>> $LOGS_FILE
+VALIDATE $? "$package"
+done

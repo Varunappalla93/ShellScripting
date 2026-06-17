@@ -52,9 +52,9 @@ else
 fi
 
 
-# exit codes - ranges from 0 to 127
+# exit status codes - ranges from 0 to 127
 # 0 - success
-# non 0 - failure
+# non-0 - failure
 
 # root user id - 0 
 # other users id - greater than 0
@@ -68,7 +68,7 @@ fi
 echo "installing nginx"
 dnf install nginx -y # Pls run script with root user access
 
-
+# $? - exit status of previous command
 if [ $? -ne 0 ]; then
     echo "installing nginx failed"
 else

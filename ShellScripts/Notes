@@ -1,1 +1,13 @@
 sh <scriptname.sh> - to run Shell files
+
+crontab - scheduler
+eg: crontab -e -> to open cron tab editor and  * * * * * echo "Hello world from crontab"
+
+crontab - l -> to list output
+* * * * * ->  min hour day month weekday(0-6)
+
+sudo tail -f /var/log/cron - to check crontab logs
+
+
+eg: crontab -e -> to open cron tab editor and  * * * * * sh /home/ec2-user/shell-practice/5_Shell.sh
+sudo tail -f /var/log/cron - to check crontab logs of that script

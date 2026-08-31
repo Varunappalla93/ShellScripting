@@ -11,3 +11,38 @@ sudo tail -f /var/log/cron - to check crontab logs
 
 eg: crontab -e -> to open cron tab editor and  * * * * * sh /home/ec2-user/shell-practice/5_Shell.sh
 sudo tail -f /var/log/cron - to check crontab logs of that script
+
+
+
+Notes2:
+ShellScripting:
+Shell has three types - bash, zsh, ksh
+#!/bin/bash - shebang - uses bash interpreter
+
+Git:
+git init - to intialize git repo
+git config --local user.name "name"/git config --global user.name "name"
+git config --local user.email "email"/git config --global user.email "email"
+git add .
+git commit -m "commit"
+git status
+git remote add origin <repo url>
+git push origin master
+git pull
+
+git log
+git revert <commit-id>
+git branch <branchname>, eg: git branch develop
+git branch  - list branches
+git checkout -b develop - to create and switch to develop branch
+git checkout <commitid> - to check to that commit change
+git merge develop - enter this from master branch to merge develop branch to main branch
+git branch -d develop - delete the develop branch if not needed as it is merged to main branch
+
+Use the PAT Token for HTTPS Authentication:
+git clone https://github.com/yourusername/repository.git
+Username: your GitHub username
+Password: [Paste your Personal Access Token]
+
+we can also use SSH or git cli Authentication methods.
+

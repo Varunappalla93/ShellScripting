@@ -30,7 +30,7 @@ uname - OS/kernel info
 uname --help - info about uname command
 man uname - info about uname command
 
-pwd - present working directory
+pwd - print working directory
 cd - change directory.
 ls - l - list files and directories in alphabetical order.
 ls - lr - list files and directories in reverse order.

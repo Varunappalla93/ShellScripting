@@ -291,7 +291,7 @@ nginx - web server to host FE static web pages, can also be used as reverse prox
 
 
 A forward proxy sits in front of clients to manage outbound traffic, masking user identities and bypassing restrictions.
-Configured and known to the client.
+Configured and Known to the client.
 Used for Content filtering, bypassing censorship, privacy.
 
 

@@ -1,0 +1,9 @@
+Ansible Roles:
+An Ansible Role breaks a monolithic playbook into specific subdirectories under a role name:
+• tasks/main.yml: Contains the main list of tasks executed by the role.
+• handlers/main.yml: Contains handlers (like restarting services) triggered by tasks using notify.
+• defaults/main.yml: Low-priority default variables that users can easily override.
+• vars/main.yml: High-priority variables that are difficult to override; use for internal constants.
+• files/: Stores static files copied to remote machines.
+• templates/: Stores dynamic Jinja2 templates rendered before copying.
+• meta/main.yml: Metadata including author information and role dependencies.
